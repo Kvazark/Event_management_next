@@ -21,6 +21,10 @@ Ensure the `.env.local` file has required environment variables:
 ```
 DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/serverApp
 ```
+blitz prisma migrate dev
+
+Чтобы сбросить
+blitz prisma migrate reset
 
 Ensure the `.env.test.local` file has required environment variables:
 
