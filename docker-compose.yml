@@ -9,6 +9,6 @@ services:
       POSTGRES_PASSWORD: "root"
     volumes:
       - ./data:/var/lib/postgresql/data
-    env_file: ./.env.local
+    env_file: server_app/.env.local
     ports:
       - "127.0.0.1:5474:5432"

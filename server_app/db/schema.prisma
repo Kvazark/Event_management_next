@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "postgres"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -13,13 +13,13 @@ generator client {
 // --------------------------------------
 
 model Category {
-  id     String  @id @default(cuid())
+  id     String  @id @default(uuid())
   title  String
   events Event[] @relation("EventCategories")
 }
 
 model Format {
-  id         String  @id @default(cuid())
+  id         String  @id @default(uuid())
   formatName String
   link       String?
   address    String?
@@ -27,7 +27,7 @@ model Format {
 }
 
 model Event {
-  id           String     @id @default(cuid())
+  id           String     @id @default(uuid())
   createdBy    User       @relation("CreatedEvents", fields: [createdIdBy], references: [id])
   createdIdBy  String
   createdAt    DateTime   @default(now())
@@ -46,7 +46,7 @@ model Event {
 }
 
 model User {
-  id                  String   @id @default(cuid())
+  id                  String   @id @default(uuid())
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
   firstName           String
@@ -64,7 +64,7 @@ model User {
 }
 
 model Session {
-  id                 String    @id @default(cuid())
+  id                 String    @id @default(uuid())
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
   expiresAt          DateTime?
@@ -79,7 +79,7 @@ model Session {
 }
 
 model Token {
-  id          String   @id @default(cuid())
+  id          String   @id @default(uuid())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   hashedToken String
